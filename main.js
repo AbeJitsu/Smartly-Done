@@ -36,7 +36,7 @@ let allPosts = [];
 
 // Fetch posts from API
 async function fetchPosts() {
-    postsContainer.innerHTML = '<div class="loading">Loading posts...</div>';
+    postsContainer.innerHTML = '<div class="loading" role="status">Loading posts...</div>';
 
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -53,7 +53,7 @@ async function fetchPosts() {
         // Render all posts
         renderPosts(allPosts);
     } catch (error) {
-        postsContainer.innerHTML = `<div class="error">Failed to load posts: ${escapeHtml(error.message)}</div>`;
+        postsContainer.innerHTML = `<div class="error" role="alert">Failed to load posts: ${escapeHtml(error.message)}</div>`;
         console.error('Error fetching posts:', error);
     }
 }
@@ -73,7 +73,7 @@ function populateFilterDropdown() {
 // Render posts to the container
 function renderPosts(posts) {
     if (posts.length === 0) {
-        postsContainer.innerHTML = '<div class="empty-state">No posts found for this filter.</div>';
+        postsContainer.innerHTML = '<div class="empty-state" role="status">No posts found for this filter.</div>';
         return;
     }
 

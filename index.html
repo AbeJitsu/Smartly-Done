@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Three-Column Layout</title>
+    <title>Smartly Done - Interactive Columns and API Posts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a href="#posts-section" class="skip-link">Skip to Posts</a>
 <main>
 
     <!-- Section 1: Three-Column Layout -->
-    <section class="column-section">
-        <h1>Our Responsive Section</h1>
+    <section class="column-section" aria-labelledby="columns-heading">
+        <h1 id="columns-heading">Smartly Done</h1>
         <p class="section-subtitle">Click or tap a column to select it. Try tabbing with your keyboard too.</p>
-        <div class="container">
-            <div class="column" tabindex="0" role="button" aria-pressed="false">
+        <div class="container" role="group" aria-label="Column selection">
+            <div class="column" tabindex="0" role="button" aria-pressed="false" aria-label="Select Column 1">
                 <div class="icon" aria-hidden="true">&#9889;</div>
                 <h2>Column 1</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div class="column" tabindex="0" role="button" aria-pressed="false">
+            <div class="column" tabindex="0" role="button" aria-pressed="false" aria-label="Select Column 2">
                 <div class="icon" aria-hidden="true">&#9733;</div>
                 <h2>Column 2</h2>
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
             </div>
-            <div class="column" tabindex="0" role="button" aria-pressed="false">
+            <div class="column" tabindex="0" role="button" aria-pressed="false" aria-label="Select Column 3">
                 <div class="icon" aria-hidden="true">&#9881;</div>
                 <h2>Column 3</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -38,16 +39,17 @@
     </section>
 
     <!-- Section 2: Posts from API -->
-    <section class="posts-section">
-        <h1>Posts from API</h1>
+    <section id="posts-section" class="posts-section" aria-labelledby="posts-heading">
+        <h2 id="posts-heading">Posts from API</h2>
         <p class="section-subtitle">Live data from JSONPlaceholder. Filter by user to narrow results.</p>
         <div class="filter-container">
             <label for="user-filter">Filter by User:</label>
-            <select id="user-filter">
+            <select id="user-filter" aria-describedby="filter-hint">
                 <option value="all">All Users</option>
             </select>
+            <span id="filter-hint" class="sr-only">Selecting a user will immediately filter the posts below.</span>
         </div>
-        <div id="posts-container" class="posts-container"></div>
+        <div id="posts-container" class="posts-container" aria-live="polite"></div>
     </section>
 
 </main>
